@@ -259,7 +259,7 @@ public class GameFloor {
 					str = icontostr.toString();
 					str = str.replaceAll(".*?image.?", "");
 					
-					System.out.println(str);
+					
 					if (e.getSource() == innerlayerfloor[i][j] && str.equals("door.jpg")) {// 按門按鈕
 						if (havakey) {
 							havakey = false;
