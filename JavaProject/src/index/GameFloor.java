@@ -279,6 +279,7 @@ public class GameFloor {
 					if (e.getSource() == innerlayerfloor[i][j] && innerlayersetting[i][j].equals("monster01.jpg")) {// 按怪物1
 
 						int nowhp = Integer.parseInt(hplabel.getText());
+						//加入被動技能:20%機率閃避
 						double dodge = Math.random();
 						dodge *= 101;
 						if (dodge > 80) {
@@ -314,6 +315,7 @@ public class GameFloor {
 					if (e.getSource() == innerlayerfloor[i][j] && innerlayersetting[i][j].equals("monster03.jpg")) {// 按怪物3
 
 						int nowhp = Integer.parseInt(hplabel.getText());
+						//加入被動技能:20%機率閃避
 						double dodge = Math.random();
 						dodge *= 101;
 						if (dodge > 80) {
