@@ -12,6 +12,8 @@ import java.awt.event.ActionListener;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
 import java.util.Random;
+
+import javax.swing.Icon;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JComponent;
@@ -238,6 +240,9 @@ public class GameFloor {
 		public void actionPerformed(ActionEvent e) {
 			// TODO Auto-generated method stub
 
+			Icon icontostr;
+			String str ;
+			
 			for (int i = 0; i < 4; i++) {// 表層按鈕事件
 				for (int j = 0; j < 4; j++) {
 					if (e.getSource() == surfacelayerfloor[i][j]) {// 看按哪個按鈕
@@ -249,7 +254,13 @@ public class GameFloor {
 
 			for (int i = 0; i < 4; i++) {// 裏層按鈕事件
 				for (int j = 0; j < 4; j++) {
-					if (e.getSource() == innerlayerfloor[i][j] && innerlayersetting[i][j].equals("door.jpg")) {// 按門按鈕
+					
+					icontostr = innerlayerfloor[i][j].getIcon();
+					str = icontostr.toString();
+					str = str.replaceAll(".*?image.?", "");
+					
+					System.out.println(str);
+					if (e.getSource() == innerlayerfloor[i][j] && str.equals("door.jpg")) {// 按門按鈕
 						if (havakey) {
 							havakey = false;
 							floor++;
@@ -259,14 +270,15 @@ public class GameFloor {
 							setnokeyDialog();
 						}
 					}
-					if (e.getSource() == innerlayerfloor[i][j] && innerlayersetting[i][j].equals("key.jpg")) {// 按鑰匙按鈕
+					if (e.getSource() == innerlayerfloor[i][j] && str.equals("key.jpg")) {// 按鑰匙按鈕
 						havakey = true;
 						// 蒐集到鑰匙改變圖案
 						innerlayerfloor[i][j].setIcon(
 								new ImageIcon(System.getProperty("user.dir") + "\\image\\innerlayerfloor.jpg"));
+						
 					}
 
-					if (e.getSource() == innerlayerfloor[i][j] && innerlayersetting[i][j].equals("hpadd.jpg")) {// 按血瓶
+					if (e.getSource() == innerlayerfloor[i][j] && str.equals("hpadd.jpg")) {// 按血瓶
 
 						int nowhp = Integer.parseInt(hplabel.getText());
 						int newhp = nowhp + 10;
@@ -276,7 +288,7 @@ public class GameFloor {
 						innerlayerfloor[i][j].setIcon(
 								new ImageIcon(System.getProperty("user.dir") + "\\image\\innerlayerfloor.jpg"));
 					}
-					if (e.getSource() == innerlayerfloor[i][j] && innerlayersetting[i][j].equals("monster01.jpg")) {// 按怪物1
+					if (e.getSource() == innerlayerfloor[i][j] && str.equals("monster01.jpg")) {// 按怪物1
 
 						int nowhp = Integer.parseInt(hplabel.getText());
 						//加入被動技能:20%機率閃避
@@ -294,7 +306,7 @@ public class GameFloor {
 						innerlayerfloor[i][j].setIcon(
 								new ImageIcon(System.getProperty("user.dir") + "\\image\\innerlayerfloor.jpg"));
 					}
-					if (e.getSource() == innerlayerfloor[i][j] && innerlayersetting[i][j].equals("monster02.jpg")) {// 按怪物2
+					if (e.getSource() == innerlayerfloor[i][j] && str.equals("monster02.jpg")) {// 按怪物2
 
 						int nowhp = Integer.parseInt(hplabel.getText());
 						//加入被動技能:20%機率閃避
@@ -312,7 +324,7 @@ public class GameFloor {
 						innerlayerfloor[i][j].setIcon(
 								new ImageIcon(System.getProperty("user.dir") + "\\image\\innerlayerfloor.jpg"));
 					}
-					if (e.getSource() == innerlayerfloor[i][j] && innerlayersetting[i][j].equals("monster03.jpg")) {// 按怪物3
+					if (e.getSource() == innerlayerfloor[i][j] && str.equals("monster03.jpg")) {// 按怪物3
 
 						int nowhp = Integer.parseInt(hplabel.getText());
 						//加入被動技能:20%機率閃避
