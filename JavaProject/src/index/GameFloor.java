@@ -289,7 +289,7 @@ public class GameFloor {
 							hplabel.setText("" + newhp);
 						}
 
-						// 按血瓶改變圖案
+						// 按怪物改變圖案
 						innerlayerfloor[i][j].setIcon(
 								new ImageIcon(System.getProperty("user.dir") + "\\image\\innerlayerfloor.jpg"));
 					}
@@ -307,7 +307,7 @@ public class GameFloor {
 							hplabel.setText("" + newhp);
 						}
 
-						// 按血瓶改變圖案
+						// 按怪物改變圖案
 						innerlayerfloor[i][j].setIcon(
 								new ImageIcon(System.getProperty("user.dir") + "\\image\\innerlayerfloor.jpg"));
 					}
