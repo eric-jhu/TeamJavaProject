@@ -75,39 +75,28 @@ public class GameMainPage {
 		JButton stage_button = new JButton("Stage", stage_icon);
 		stage_button.setVerticalTextPosition(SwingConstants.HORIZONTAL);
 		stage_button.setHorizontalTextPosition(SwingConstants.CENTER);
-
-		// 關卡按鈕
-		stage_button.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-
-				// Object shop_button = null;
-				// TODO Auto-generated method stub
-				if (e.getSource() == stage_button) {
+		
+		// 添加所有按鈕事件
+		ActionListener actionListener = new ActionListener() {
+            public void actionPerformed(ActionEvent e) {
+            	if (e.getSource() == bag_button) {
+					frame.setVisible(false);
+					Bag bag = new Bag();
+				}
+            	else if (e.getSource() == stage_button) {
 					frame.setVisible(false);
 					GameFloor i = new GameFloor();
 					i.floor = 1;
 				}
-
-			}
-
-		});
-		
-		character_button.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-
-				// Object shop_button = null;
-				// TODO Auto-generated method stub
-				if (e.getSource() == character_button) {
+            	else if (e.getSource() == character_button) {
 					frame.setVisible(false);
 					 new RolePage();
-					
-				}
-
-			}
-
-		});
-		
-		
+				} 
+            }
+		};
+		bag_button.addActionListener(actionListener);
+		stage_button.addActionListener(actionListener); 
+		character_button.addActionListener(actionListener);
 
 		// 設定按鈕文字
 		Font buttonFont = new Font("Microsoft YaHei", Font.BOLD, 20);
@@ -212,7 +201,7 @@ public class GameMainPage {
 		stagePanel.setBackground(new Color(0, 0, 0, 0));
 
 		frame.add(backgroundPanel);
-		frame.pack();
+
 
 		frame.setVisible(true);
 	}

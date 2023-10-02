@@ -6,7 +6,9 @@ public class SystemEnter {
 		// TODO Auto-generated method stub
 
 		//IndexPage indexpage = new IndexPage();
-		GameFloor g = new GameFloor();
+//		GameFloor g = new GameFloor();
+//		new Bag();
+		new GameMainPage();
 	}
 
 }
