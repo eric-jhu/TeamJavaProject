@@ -1,3 +1,5 @@
+package index;
+
 import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Cursor;
@@ -6,6 +8,7 @@ import java.awt.FlowLayout;
 import java.awt.Font;
 import java.awt.Graphics;
 import java.awt.Image;
+import java.awt.Toolkit;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.MouseAdapter;
@@ -15,18 +18,27 @@ import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.SwingConstants;
+import javax.swing.SwingUtilities;
 
 public class GameMainPage {
-	JFrame frame = new JFrame("GameMainPage");
+	JFrame frame = new JFrame("無盡之塔");
 
 	public GameMainPage() {
 		setGameMainPage();
 	}// 建構子結束
 
-	void setGameMainPage() {
+	private void setGameMainPage() {
 
 		frame.setResizable(false);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+
+		frame.setSize(400, 700);
+
+		// 將 JFrame 設定為在視窗中央顯示
+		Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
+		int centerX = (int) ((screenSize.getWidth() - frame.getWidth()) / 2);
+		int centerY = (int) ((screenSize.getHeight() - frame.getHeight()) / 2);
+		frame.setLocation(centerX, centerY);
 
 		// 創建按鈕圖片
 		int Width = 70;
@@ -64,23 +76,38 @@ public class GameMainPage {
 		stage_button.setVerticalTextPosition(SwingConstants.HORIZONTAL);
 		stage_button.setHorizontalTextPosition(SwingConstants.CENTER);
 
-		
-		// 添加所有按鈕事件
-		ActionListener actionListener = new ActionListener() {
-            public void actionPerformed(ActionEvent e) {
-            	if (e.getSource() == bag_button) {
-					frame.setVisible(false);
-					Bag bag = new Bag();
-				}
-            	else if (e.getSource() == stage_button) {
+		// 關卡按鈕
+		stage_button.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+
+				// Object shop_button = null;
+				// TODO Auto-generated method stub
+				if (e.getSource() == stage_button) {
 					frame.setVisible(false);
 					GameFloor i = new GameFloor();
 					i.floor = 1;
 				}
-            }
-		};
-		bag_button.addActionListener(actionListener);
-		stage_button.addActionListener(actionListener);    
+
+			}
+
+		});
+		
+		character_button.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+
+				// Object shop_button = null;
+				// TODO Auto-generated method stub
+				if (e.getSource() == character_button) {
+					frame.setVisible(false);
+					 new RolePage();
+					
+				}
+
+			}
+
+		});
+		
+		
 
 		// 設定按鈕文字
 		Font buttonFont = new Font("Microsoft YaHei", Font.BOLD, 20);
@@ -185,9 +212,8 @@ public class GameMainPage {
 		stagePanel.setBackground(new Color(0, 0, 0, 0));
 
 		frame.add(backgroundPanel);
-		frame.setLocation(500, 0);
 		frame.pack();
-		frame.setSize(400, 700);
+
 		frame.setVisible(true);
 	}
 
