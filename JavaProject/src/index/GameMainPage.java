@@ -91,12 +91,17 @@ public class GameMainPage {
             	else if (e.getSource() == character_button) {
 					frame.setVisible(false);
 					 new RolePage();
+				}
+		else if (e.getSource() == shop_button) {
+					frame.setVisible(false);
+					 new shop();
 				} 
             }
 		};
 		bag_button.addActionListener(actionListener);
 		stage_button.addActionListener(actionListener); 
 		character_button.addActionListener(actionListener);
+		shop_button.addActionListener(actionListener);
 
 		// 設定按鈕文字
 		Font buttonFont = new Font("Microsoft YaHei", Font.BOLD, 20);
