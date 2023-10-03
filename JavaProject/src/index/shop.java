@@ -102,24 +102,24 @@ public class shop {
 		coinLabel.setBounds(70, 60, 100, 100);
 		frmShop.getContentPane().add(coinLabel);
 
-		JButton m1buyButton = new JButton("$100  buy");// 1號法師商品購買紐
-		m1buyButton.setFont(new Font("Yu Gothic UI Semilight", Font.BOLD, 12));
-		m1buyButton.setBounds(200, 240, 150, 25);
+		JButton m1buyButton = new JButton("<html>藍色魔杖<br>$100 buy</html>");// 1號法師商品購買紐
+		m1buyButton.setFont(new Font("Yu Gothic UI Semilight", Font.BOLD, 15));
+		m1buyButton.setBounds(200, 230, 150, 50);
 		frmShop.getContentPane().add(m1buyButton);
 		
-		JButton m2buyButton = new JButton("$100  buy");// 2號法師商品購買紐
-		m2buyButton.setFont(new Font("Yu Gothic UI Semilight", Font.BOLD, 12));
-		m2buyButton.setBounds(200, 460, 150, 25);
+		JButton m2buyButton = new JButton("<html>魔法帽<br>$100 buy</html>");// 2號法師商品購買紐
+		m2buyButton.setFont(new Font("Yu Gothic UI Semilight", Font.BOLD, 15));
+		m2buyButton.setBounds(200, 450, 150, 50);
 		frmShop.getContentPane().add(m2buyButton);
 		
-		JButton s1buyButton = new JButton("$100  buy");// 1號劍士商品購買紐
-		s1buyButton.setFont(new Font("Yu Gothic UI Semilight", Font.BOLD, 12));
-		s1buyButton.setBounds(200, 350, 150, 25);
+		JButton s1buyButton = new JButton("<html>斧頭<br>$100 buy</html>");// 1號劍士商品購買紐
+		s1buyButton.setFont(new Font("Yu Gothic UI Semilight", Font.BOLD, 15));
+		s1buyButton.setBounds(200, 340, 150, 50);
 		frmShop.getContentPane().add(s1buyButton);
 
-		JButton s2buyButton = new JButton("$100  buy");// 2號劍士商品購買紐
-		s2buyButton.setFont(new Font("Yu Gothic UI Semilight", Font.BOLD, 12));
-		s2buyButton.setBounds(200, 570, 150, 25);
+		JButton s2buyButton = new JButton("<html>青銅頭盔<br>$100 buy</html>");// 2號劍士商品購買紐
+		s2buyButton.setFont(new Font("Yu Gothic UI Semilight", Font.BOLD, 15));
+		s2buyButton.setBounds(200, 560, 150, 50);
 		frmShop.getContentPane().add(s2buyButton);
 		
 		JLabel shopLabel = new JLabel("");//商城背景
