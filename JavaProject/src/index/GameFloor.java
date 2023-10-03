@@ -37,14 +37,24 @@ public class GameFloor {
 
 	// 魔法師
 	ImageIcon Mage_icon = new ImageIcon(System.getProperty("user.dir") + "\\image\\mage.jpg");
-	Image scaled_Mage_icon = Mage_icon.getImage().getScaledInstance(80, 135, Image.SCALE_SMOOTH);
-	ImageIcon mage_icon = new ImageIcon(scaled_Mage_icon);
+	ImageIcon mage_icon = new ImageIcon(Mage_icon.getImage().getScaledInstance(80, 135, Image.SCALE_SMOOTH));
 	// 劍士
 	ImageIcon Swordsman_icon = new ImageIcon(System.getProperty("user.dir") + "\\image\\swordsman.jpg");
-	Image scaled_Swordsman_icon = Swordsman_icon.getImage().getScaledInstance(80, 135, Image.SCALE_SMOOTH);
-	ImageIcon swordsman_icon = new ImageIcon(scaled_Swordsman_icon);
+	ImageIcon swordsman_icon = new ImageIcon(Swordsman_icon.getImage().getScaledInstance(80, 135, Image.SCALE_SMOOTH));
+
+	// 怪物1
+	ImageIcon Monster01_icon = new ImageIcon(System.getProperty("user.dir") + "\\image\\monster01.jpg");
+	ImageIcon monster01_icon = new ImageIcon(Monster01_icon.getImage().getScaledInstance(370, 370, Image.SCALE_SMOOTH));
+	// 怪物2
+	ImageIcon Monster02_icon = new ImageIcon(System.getProperty("user.dir") + "\\image\\monster02.jpg");
+	ImageIcon monster02_icon = new ImageIcon(Monster02_icon.getImage().getScaledInstance(370, 370, Image.SCALE_SMOOTH));
+	// 怪物3
+	ImageIcon Monster03_icon = new ImageIcon(System.getProperty("user.dir") + "\\image\\monster03.jpg");
+	ImageIcon monster03_icon = new ImageIcon(Monster03_icon.getImage().getScaledInstance(370, 370, Image.SCALE_SMOOTH));
 
 	JButton rolebutton = new JButton();// 角色按鈕
+
+	JButton battlebutton = new JButton();// 按倒怪物按鈕時,做戰鬥用
 
 	// 物品背包按鈕圖片設定
 
@@ -56,12 +66,11 @@ public class GameFloor {
 	JButton magicbackpackbutton = new JButton(
 			new ImageIcon(System.getProperty("user.dir") + "\\image\\magicbackpac.jpg"));// 魔法背包按鈕
 
-	
-	JLabel floorlabel = new JLabel();// 樓層	
+	JLabel floorlabel = new JLabel();// 樓層
 	static JLabel hplabel = new JLabel("90");// 生命值
 	static JLabel attacklabel = new JLabel("50");// 攻擊力
-	JLabel magiclabel = new JLabel();// 魔力
-	JLabel magicalvaluelabel = new JLabel("第一層");// 魔法量
+	// JLabel magiclabel = new JLabel();// 魔力
+	// JLabel magicalvaluelabel = new JLabel("第一層");// 魔法量
 	JLabel backgroundlabel = new JLabel(new ImageIcon(System.getProperty("user.dir") + "\\image\\framebackground.jpg"));// 大背景
 	// 在當前工作目錄下取得我資料夾的照片,方便之後資料夾移動
 
@@ -71,8 +80,6 @@ public class GameFloor {
 			{ "innerlayerfloor.jpg", "innerlayerfloor.jpg", "innerlayerfloor.jpg", "innerlayerfloor.jpg" },
 			{ "door.jpg", "hpadd.jpg", "key.jpg", "innerlayerfloor.jpg" },
 			{ "monster01.jpg", "monster02.jpg", "monster03.jpg", "monster03.jpg" } };
-
-	String[][] raninnerlayersetting = new String[4][4];
 
 	static boolean havakey = false;// 是否持有鑰匙
 	static int floor = 1;// 當前樓層
@@ -114,8 +121,10 @@ public class GameFloor {
 		backgroundlabel.add(magicbackpackbutton);
 		backgroundlabel.add(hplabel);
 		backgroundlabel.add(attacklabel);
-		backgroundlabel.add(magiclabel);
-		backgroundlabel.add(magicalvaluelabel);
+		backgroundlabel.add(battlebutton);
+		battlebutton.setVisible(false);
+		// backgroundlabel.add(magiclabel);
+		// backgroundlabel.add(magicalvaluelabel);
 		exitbutton.setOpaque(false);
 		exitbutton.setBackground(new Color(0, 0, 0, 0));
 		exitbutton.setBorder(null);
@@ -167,6 +176,7 @@ public class GameFloor {
 		hplabel.setForeground(Color.RED);
 		hplabel.setFont(new Font("Serif", Font.BOLD, 20));
 		rolebutton.setBounds(150, 515, 80, 135);// 角色按鈕
+		battlebutton.setBounds(8, 100, 370, 370);
 
 		if (RolePage.gotowarrole().equals("mage_icon")) {
 			rolebutton.setIcon(mage_icon);
@@ -188,6 +198,7 @@ public class GameFloor {
 		}
 
 		// 按鈕事件設定
+		battlebutton.addActionListener(new GameFloorListener());
 		for (int i = 0; i < 4; i++) {
 			for (int j = 0; j < 4; j++) {
 				surfacelayerfloor[i][j].addActionListener(new GameFloorListener());
@@ -241,8 +252,8 @@ public class GameFloor {
 			// TODO Auto-generated method stub
 
 			Icon icontostr;
-			String str ;
-			
+			String str;
+
 			for (int i = 0; i < 4; i++) {// 表層按鈕事件
 				for (int j = 0; j < 4; j++) {
 					if (e.getSource() == surfacelayerfloor[i][j]) {// 看按哪個按鈕
@@ -254,12 +265,11 @@ public class GameFloor {
 
 			for (int i = 0; i < 4; i++) {// 裏層按鈕事件
 				for (int j = 0; j < 4; j++) {
-					
+
 					icontostr = innerlayerfloor[i][j].getIcon();
 					str = icontostr.toString();
 					str = str.replaceAll(".*?image.?", "");
-					
-					
+					System.out.println(str);
 					if (e.getSource() == innerlayerfloor[i][j] && str.equals("door.jpg")) {// 按門按鈕
 						if (havakey) {
 							havakey = false;
@@ -275,7 +285,7 @@ public class GameFloor {
 						// 蒐集到鑰匙改變圖案
 						innerlayerfloor[i][j].setIcon(
 								new ImageIcon(System.getProperty("user.dir") + "\\image\\innerlayerfloor.jpg"));
-						
+
 					}
 
 					if (e.getSource() == innerlayerfloor[i][j] && str.equals("hpadd.jpg")) {// 按血瓶
@@ -290,17 +300,8 @@ public class GameFloor {
 					}
 					if (e.getSource() == innerlayerfloor[i][j] && str.equals("monster01.jpg")) {// 按怪物1
 
-						int nowhp = Integer.parseInt(hplabel.getText());
-						//加入被動技能:20%機率閃避
-						double dodge = Math.random();
-						dodge *= 101;
-						if (dodge > 80) {
-							int newhp = nowhp;
-							hplabel.setText("" + newhp);
-						} else {
-							int newhp = nowhp - 10;
-							hplabel.setText("" + newhp);
-						}
+						battlebutton.setVisible(true);
+						battlebutton.setIcon(monster01_icon);
 
 						// 按怪物改變圖案
 						innerlayerfloor[i][j].setIcon(
@@ -308,36 +309,16 @@ public class GameFloor {
 					}
 					if (e.getSource() == innerlayerfloor[i][j] && str.equals("monster02.jpg")) {// 按怪物2
 
-						int nowhp = Integer.parseInt(hplabel.getText());
-						//加入被動技能:20%機率閃避
-						double dodge = Math.random();
-						dodge *= 101;
-						if (dodge > 80) {
-							int newhp = nowhp;
-							hplabel.setText("" + newhp);
-						} else {
-							int newhp = nowhp - 10;
-							hplabel.setText("" + newhp);
-						}
-
+						battlebutton.setVisible(true);
+						battlebutton.setIcon(monster02_icon);
 						// 按怪物改變圖案
 						innerlayerfloor[i][j].setIcon(
 								new ImageIcon(System.getProperty("user.dir") + "\\image\\innerlayerfloor.jpg"));
 					}
 					if (e.getSource() == innerlayerfloor[i][j] && str.equals("monster03.jpg")) {// 按怪物3
 
-						int nowhp = Integer.parseInt(hplabel.getText());
-						//加入被動技能:20%機率閃避
-						double dodge = Math.random();
-						dodge *= 101;
-						if (dodge > 80) {
-							int newhp = nowhp;
-							hplabel.setText("" + newhp);
-						} else {
-							int newhp = nowhp - 10;
-							hplabel.setText("" + newhp);
-						}
-
+						battlebutton.setVisible(true);
+						battlebutton.setIcon(monster03_icon);
 						// 按怪物改變圖案
 						innerlayerfloor[i][j].setIcon(
 								new ImageIcon(System.getProperty("user.dir") + "\\image\\innerlayerfloor.jpg"));
@@ -345,6 +326,24 @@ public class GameFloor {
 
 				}
 			} // 裏層按鈕事件
+
+			if (e.getSource() == battlebutton) {// 戰鬥按鈕
+
+				// 機率閃避
+				int nowhp = Integer.parseInt(hplabel.getText());
+				// 加入被動技能:20%機率閃避
+				double dodge = Math.random();
+				dodge *= 101;
+				if (dodge > 80) {
+					int newhp = nowhp;
+					hplabel.setText("" + newhp);
+				} else {
+					int newhp = nowhp - 10;
+					hplabel.setText("" + newhp);
+				}
+				
+				battlebutton.setVisible(false);
+			}
 
 			if (e.getSource() == exitbutton) {// 離開按鈕事件
 				floor = 1;

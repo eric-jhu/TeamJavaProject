@@ -6,6 +6,7 @@ import java.awt.Container;
 import java.awt.Dialog;
 import java.awt.Dimension;
 import java.awt.Font;
+import java.awt.Image;
 import java.awt.Toolkit;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -23,9 +24,12 @@ public class IndexPage {// 首頁版面
 
 	JFrame indexFrame = new JFrame("無盡之塔");// 版面
 
-	//Container frameCon = indexFrame.getContentPane();// 小版面
-
-	JLabel headLabel = new JLabel("冒險者歡迎來到無盡之塔~~");// 大標題
+	JLabel headLabel = new JLabel();// 大標題
+	// logo
+	ImageIcon Logo_icon = new ImageIcon(System.getProperty("user.dir") + "\\image\\logo.png");
+	ImageIcon logo_icon = new ImageIcon(Logo_icon.getImage().getScaledInstance(300, 200, Image.SCALE_SMOOTH));
+	
+	
 
 	JButton loginButton = new JButton("登入");// 登入紐
 	JButton registerButton = new JButton("註冊");// 註冊紐
@@ -35,7 +39,7 @@ public class IndexPage {// 首頁版面
 	JLabel exitLabel = new JLabel("確定要離開嗎?");// 離開確認標題
 	JButton trueExitButton = new JButton("離開");// 離開對話窗離開紐
 	JButton falseExitButton = new JButton("取消");// 離開對話窗取消紐
-	
+
 	JLabel backgroundlabel = new JLabel(new ImageIcon(System.getProperty("user.dir") + "\\image\\framebackground.jpg"));// 大背景
 
 	IndexPage() {// 建構子
@@ -47,19 +51,16 @@ public class IndexPage {// 首頁版面
 		indexFrame.setResizable(false);
 		indexFrame.setDefaultCloseOperation(indexFrame.EXIT_ON_CLOSE);
 		indexFrame.setLayout(new BorderLayout());
-		
+
 		// 將 JFrame 設定為在視窗中央顯示
-        Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
-        int centerX = (int) ((screenSize.getWidth() - indexFrame.getWidth()) / 2);
-        int centerY = (int) ((screenSize.getHeight() - indexFrame.getHeight()) / 2);
-        indexFrame.setLocation(centerX, centerY);
-		
-		
+		Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
+		int centerX = (int) ((screenSize.getWidth() - indexFrame.getWidth()) / 2);
+		int centerY = (int) ((screenSize.getHeight() - indexFrame.getHeight()) / 2);
+		indexFrame.setLocation(centerX, centerY);
+
 		indexFrame.add(backgroundlabel);// 背景圖加入佔住整個版面
 
 		backgroundlabel.setLayout(null);
-		
-		
 
 		// 加到視窗
 		backgroundlabel.add(headLabel);
@@ -68,9 +69,10 @@ public class IndexPage {// 首頁版面
 		backgroundlabel.add(exitButton);
 
 		// 位置設定
-		headLabel.setBounds(70, 100, 300, 30);
-		headLabel.setForeground(Color.WHITE);
-		headLabel.setFont(new Font("Serif", Font.BOLD, 20));		
+		headLabel.setBounds(40, 30, 300, 200);
+		headLabel.setIcon(logo_icon);
+//		headLabel.setForeground(Color.WHITE);
+//		headLabel.setFont(new Font("Serif", Font.BOLD, 20));
 		loginButton.setBounds(150, 200, 80, 30);
 		loginButton.setForeground(Color.black);
 		loginButton.setFont(new Font("Serif", Font.BOLD, 20));
@@ -94,33 +96,36 @@ public class IndexPage {// 首頁版面
 	private void setexitDialog() {// 離開對話窗設定
 
 		exitDialog.setSize(300, 200);// 離開對話窗大小
-		exitDialog.setLayout(null);//不設版面
-		exitDialog.setModal(true); 
-		
+		exitDialog.setLayout(null);// 不設版面
+		exitDialog.setModal(true);
+
 		Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
-        int centerX = (int) ((screenSize.getWidth() - exitDialog.getWidth()) / 2);
-        int centerY = (int) ((screenSize.getHeight() - exitDialog.getHeight()) / 2);
-        exitDialog.setLocation(centerX, centerY);
-		
-		//加入到視窗
+		int centerX = (int) ((screenSize.getWidth() - exitDialog.getWidth()) / 2);
+		int centerY = (int) ((screenSize.getHeight() - exitDialog.getHeight()) / 2);
+		exitDialog.setLocation(centerX, centerY);
+
+		// 加入到視窗
 		exitDialog.add(exitLabel);
 		exitDialog.add(trueExitButton);
 		exitDialog.add(falseExitButton);
 
-		//位置大小設定
+		// 位置大小設定
 		exitLabel.setBounds(50, 50, 150, 30);
 		exitLabel.setFont(new Font("Serif", Font.BOLD, 20));
 		trueExitButton.setBounds(70, 120, 80, 30);
 		trueExitButton.setFont(new Font("Serif", Font.BOLD, 20));
 		falseExitButton.setBounds(180, 120, 80, 30);
 		falseExitButton.setFont(new Font("Serif", Font.BOLD, 20));
-		
-		//按鈕事件
+
+		// 按鈕事件
 		trueExitButton.addActionListener(new IndexListener());
 		falseExitButton.addActionListener(new IndexListener());
-		
-		exitDialog.addWindowListener(new WindowAdapter() {//用匿名類別設定window事件將彈出視窗關閉
-			public void windowClosing(WindowEvent event) {exitDialog.dispose();}});
+
+		exitDialog.addWindowListener(new WindowAdapter() {// 用匿名類別設定window事件將彈出視窗關閉
+			public void windowClosing(WindowEvent event) {
+				exitDialog.dispose();
+			}
+		});
 
 		exitDialog.setVisible(true);// 呼叫顯示
 	}
@@ -130,25 +135,25 @@ public class IndexPage {// 首頁版面
 		@Override
 		public void actionPerformed(ActionEvent e) {// 按鈕方法設定
 			// TODO Auto-generated method stub
-			
-			if(e.getSource() == loginButton) {
+
+			if (e.getSource() == loginButton) {
 				LoginPage login = new LoginPage();
-				indexFrame.setVisible(false);//隱藏首頁
-				
-			}else if(e.getSource() == registerButton) {
+				indexFrame.setVisible(false);// 隱藏首頁
+
+			} else if (e.getSource() == registerButton) {
 				RegisterPage register = new RegisterPage();
-				indexFrame.setVisible(false);//隱藏首頁
-				
-			}else if(e.getSource() ==exitButton) {
-				setexitDialog();//呼叫對話視窗
-				//exitDialog.setVisible(true);
-				
-			}else if(e.getSource() ==trueExitButton) {
-				System.exit(0);//按結束關閉視窗
-			}else {
+				indexFrame.setVisible(false);// 隱藏首頁
+
+			} else if (e.getSource() == exitButton) {
+				setexitDialog();// 呼叫對話視窗
+				// exitDialog.setVisible(true);
+
+			} else if (e.getSource() == trueExitButton) {
+				System.exit(0);// 按結束關閉視窗
+			} else {
 				exitDialog.setVisible(false);
 			}
-				
+
 		}// 按鈕方法設定結束
 
 	}// 按鈕事件結束

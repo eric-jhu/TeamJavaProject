@@ -177,7 +177,8 @@ public class RolePage {
 					gotowarButton.setEnabled(true);
 				}
 			}
-
+			
+			//傳遞出戰角色數值
 			if (e.getSource() == gotowarButton) {
 				gotowarButton.setEnabled(false);
 				chanstr = gotowarrole;
