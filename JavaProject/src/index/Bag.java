@@ -16,11 +16,17 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import java.awt.event.WindowAdapter;
+import java.awt.event.WindowEvent;
+import java.util.concurrent.atomic.AtomicBoolean;
+import java.util.concurrent.atomic.AtomicInteger;
+
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JDialog;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.JLayeredPane;
 import javax.swing.JPanel;
 import javax.swing.SwingConstants;
 import javax.swing.UIManager;
@@ -29,7 +35,6 @@ import javax.swing.UIManager;
 class bagBackground extends JPanel {
 	public bagBackground() {
         setOpaque(false); // 設定為透明
-//        setPreferredSize(new Dimension(400, 700));
     }
 	protected void paintComponent(Graphics g) {
         super.paintComponent(g);
@@ -71,63 +76,98 @@ public class Bag{
 	int Height = 100;
 	
 	// 斧頭
-	ImageIcon Axe_icon = new ImageIcon("image/items/axe.png");
+	ImageIcon Axe_icon = new ImageIcon("image/items/axe.jpg");
 	Image scaled_Axe_icon = Axe_icon.getImage().getScaledInstance(Width, Height, Image.SCALE_SMOOTH);
 	ImageIcon axe_icon = new ImageIcon(scaled_Axe_icon);
 	
 	// 藍色魔杖
-	ImageIcon BlueMagicStick_icon = new ImageIcon("image/items/bluemagicStick.png");
+	ImageIcon BlueMagicStick_icon = new ImageIcon("image/items/bluemagicStick.jpg");
 	Image scaled_BlueMagicStick_icon = BlueMagicStick_icon.getImage().getScaledInstance(Width, Height, Image.SCALE_SMOOTH);
 	ImageIcon blueMagicStick_icon = new ImageIcon(scaled_BlueMagicStick_icon);
 	
 	// 魔法書
-	ImageIcon MagicBook_icon = new ImageIcon("image/items/magicBook.png");
+	ImageIcon MagicBook_icon = new ImageIcon("image/items/magicBook.jpg");
 	Image scaled_MagicBook_icon = MagicBook_icon.getImage().getScaledInstance(Width, Height, Image.SCALE_SMOOTH);
 	ImageIcon magicBook_icon = new ImageIcon(scaled_MagicBook_icon);
 	
 	// 魔法杖
-	ImageIcon MagicStick_icon = new ImageIcon("image/items/magicStick.png");
+	ImageIcon MagicStick_icon = new ImageIcon("image/items/magicStick.jpg");
 	Image scaled_MagicStick_icon = MagicStick_icon.getImage().getScaledInstance(Width, Height, Image.SCALE_SMOOTH);
 	ImageIcon magicStick_icon = new ImageIcon(scaled_MagicStick_icon);
 	
 	// 紫劍
-	ImageIcon PurpleSword_icon = new ImageIcon("image/items/purpleSword.png");
+	ImageIcon PurpleSword_icon = new ImageIcon("image/items/purpleSword.jpg");
 	Image scaled_PurpleSword_icon = PurpleSword_icon.getImage().getScaledInstance(Width, Height, Image.SCALE_SMOOTH);
 	ImageIcon purpleSword_icon = new ImageIcon(scaled_PurpleSword_icon);
 	
 	// 劍
-	ImageIcon Sword_icon = new ImageIcon("image/items/sword.png");
+	ImageIcon Sword_icon = new ImageIcon("image/items/sword.jpg");
 	Image scaled_Sword_icon = Sword_icon.getImage().getScaledInstance(Width, Height, Image.SCALE_SMOOTH);
 	ImageIcon sword_icon = new ImageIcon(scaled_Sword_icon);
 	
 	// 創建裝備按鈕
-	JButton Axe_button = new JButton("斧頭", axe_icon);
-	JButton BlueMagicStick_button = new JButton("藍色魔杖", blueMagicStick_icon);
-	JButton MagicBook_button = new JButton("魔法書", magicBook_icon);
-	JButton MagicStick_button = new JButton("魔法杖", magicStick_icon);
-	JButton PurpleSword_button = new JButton("紫劍", purpleSword_icon);
-	JButton Sword_button = new JButton("劍", sword_icon);
+	JButton Axe_button = new JButton(axe_icon);
+	JButton BlueMagicStick_button = new JButton(blueMagicStick_icon);
+	JButton MagicBook_button = new JButton(magicBook_icon);
+	JButton MagicStick_button = new JButton(magicStick_icon);
+	JButton PurpleSword_button = new JButton(purpleSword_icon);
+	JButton Sword_button = new JButton(sword_icon);
+	
+	
 	
 	JButton[] buttons = {Axe_button, BlueMagicStick_button, MagicBook_button, 
 			MagicStick_button, PurpleSword_button, Sword_button};
 	
+	// 創建字體
+	Font buttonFont = new Font("Microsoft YaHei", Font.BOLD, 15);
 	
+	// 創建已裝備的label
+	JLabel equippedLabel = new JLabel("已裝備");
 	
 	public Bag() {
 		setBag();
 	}
-
+	
+	// 創建裝備按鈕的圖片
+	ImageIcon Equip_icon = new ImageIcon("image/items/gameButton.png");
+	Image scaled_equip_icon = Equip_icon.getImage().getScaledInstance(75, 25, Image.SCALE_SMOOTH);
+	ImageIcon equip_icon = new ImageIcon(scaled_equip_icon);
+	
+	// 是否裝備按鈕
+	JButton equipButton = new JButton("裝備", equip_icon); 
+	JButton cancelButton = new JButton("取消", equip_icon);
+	
+	// 裝備items的方法
+	Boolean isEquipped = false;
+	void equipItems() {
+		// 添加已裝備在按鈕上
+		// 設定一次只能裝一個
+		// 設定卸下裝備
+		// 設定是否替換裝備
+		int a = 0;	
+	}
+	
+	
+	
 	void setBag() {
+		bagFrame.addWindowListener(new WindowAdapter() {// 用匿名類別設定window事件將視窗關閉
+			public void windowClosing(WindowEvent event) {// 視窗關閉開啟主視窗
+				bagFrame.dispose();
+				GameMainPage i = new GameMainPage();
+				i.frame.setVisible(true);
+			}
+		});
 		bagFrame.setResizable(false);
-		bagFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		bagFrame.setSize(400, 700);
 		bagFrame.setVisible(true);
+		
 		// 將 JFrame 設定為在視窗中央顯示
 		Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
 		int centerX = (int) ((screenSize.getWidth() - bagFrame.getWidth()) / 2);
 		int centerY = (int) ((screenSize.getHeight() - bagFrame.getHeight()) / 2);
 		bagFrame.setLocation(centerX, centerY);
-	
+		
+		
 		// 滑鼠進入離開效果
 		MouseAdapter mouseAdapter = new MouseAdapter() {
 			@Override
@@ -185,23 +225,16 @@ public class Bag{
 		bag_backgroundPanel.add(MagicStick_button, gbc4);
 		bag_backgroundPanel.add(PurpleSword_button, gbc5);
 		bag_backgroundPanel.add(Sword_button, gbc6);
+
+		
+		
 		
 		// 添加所有裝備按鈕事件
 		ActionListener actionListener = new ActionListener() {
             public void actionPerformed(ActionEvent e) {
             	JDialog customDialog = new JDialog(bagFrame, "", true);
-            	
-            	// 創建裝備按鈕的圖片
-            	ImageIcon Equip_icon = new ImageIcon("image/items/gameButton.jpg");
-            	Image scaled_equip_icon = Equip_icon.getImage().getScaledInstance(75, 25, Image.SCALE_SMOOTH);
-            	ImageIcon equip_icon = new ImageIcon(scaled_equip_icon);
-            	      	
-            	// 是否裝備按鈕
-            	JButton equipButton = new JButton("裝備", equip_icon); 
-            	JButton cancelButton = new JButton("取消", equip_icon);
-            	
-            	// 設定按鈕文字
-        		Font buttonFont = new Font("Microsoft YaHei", Font.BOLD, 15);
+  	
+            	// 設定按鈕文字        		
         		equipButton.setFont(buttonFont);
         		equipButton.setForeground(Color.WHITE);
         		cancelButton.setFont(buttonFont);
@@ -235,60 +268,94 @@ public class Bag{
                 gbc3.insets = new Insets(10, 0, 10, 0);
                 gbc3.gridx = 0;
                 gbc3.gridy = 0;
+                    
+                
+        		
+                final AtomicInteger button_num = new AtomicInteger(0);  // 使用 AtomicInteger 作為計數器
+                         
+                ImageIcon itemIcon = null;
+
+                if (e.getSource() == exitbutton) {
+                    bagFrame.dispose();
+                    GameMainPage Mainpage = new GameMainPage();
+                    Mainpage.frame.setVisible(true);
+                } else if (e.getSource() == Axe_button) {
+                    itemIcon = axe_icon;
+                    button_num.set(1);
+                } else if (e.getSource() == BlueMagicStick_button) {
+                    itemIcon = blueMagicStick_icon;
+                    button_num.set(2);
+                } else if (e.getSource() == MagicBook_button) {
+                    itemIcon = magicBook_icon;
+                    button_num.set(3);
+                } else if (e.getSource() == MagicStick_button) {
+                    itemIcon = magicStick_icon;
+                    button_num.set(4);
+                } else if (e.getSource() == PurpleSword_button) {
+                    itemIcon = purpleSword_icon;
+                    button_num.set(5);
+                } else if (e.getSource() == Sword_button) {
+                    itemIcon = sword_icon;
+                    button_num.set(6);
+                }
+
+                if (itemIcon != null) {
+                    JLabel axeLabel = new JLabel(itemIcon);
+                    dialogPanel.add(axeLabel, gbc3);
+                }
                 
                 // 裝備或取消按紐
                 dialogPanel.add(equipButton, gbc1);
                 dialogPanel.add(cancelButton, gbc2);
                 
-                equipButton.addActionListener(closeEvent -> {
+                // 根據buy的值啟禁用按鈕
+                AtomicBoolean isEquipped = new AtomicBoolean(true);  
+         	
+                equipButton.addActionListener(closeEvent -> {	
+                	customDialog.dispose();
+                	
                 	// 這邊添加裝備後的程式碼. 角色加成攻擊力. 顯示按鈕已裝備
-                    customDialog.dispose(); // 關閉對話框
+                	switch (button_num.get()) {
+                	
+                    case 1:
+                        Axe_button.setText("已裝備");
+                        break;
+                    case 2:
+                        BlueMagicStick_button.setText("已裝備");
+                        break;
+                    case 3: 
+                    	MagicBook_button.setText("已裝備");
+                    	break;
+                    case 4:
+                    	MagicStick_button.setText("已裝備");
+                    	break;
+                    case 5:
+                    	PurpleSword_button.setText("已裝備");
+                    	break;
+                    case 6:
+                    	Sword_button.setText("已裝備");
+                    	break;
+                	}
+                	// 裝備後將 isEquipped 設置為 false
+                    isEquipped.set(false);
+
+                    // 根據新的狀態重新設置按鈕的啟用狀態
+                    equipButton.setEnabled(isEquipped.get());
                 });
                 
                 cancelButton.addActionListener(closeEvent -> {
                     customDialog.dispose(); // 關閉對話框
                 });
-        		
-                if (e.getSource() == exitbutton) { //回到遊戲主頁面
-    				bagFrame.dispose();
-    				GameMainPage Mainpage = new GameMainPage();
-    				Mainpage.frame.setVisible(true);
-    			}
-                         
-                else if (e.getSource() == Axe_button) {
-                	JLabel axeLabel = new JLabel(axe_icon);
-                	dialogPanel.add(axeLabel, gbc3);        		
-                }
-                else if (e.getSource() == BlueMagicStick_button) {
-                	JLabel axeLabel = new JLabel(blueMagicStick_icon);
-                	dialogPanel.add(axeLabel, gbc3);        		
-                }
-                else if (e.getSource() == MagicBook_button) {
-                	JLabel axeLabel = new JLabel(magicBook_icon);
-                	dialogPanel.add(axeLabel, gbc3);        		
-                }
-                else if (e.getSource() == MagicStick_button) {
-                	JLabel axeLabel = new JLabel(magicStick_icon);
-                	dialogPanel.add(axeLabel, gbc3);        		
-                }
-                else if (e.getSource() == PurpleSword_button) {
-                	JLabel axeLabel = new JLabel(purpleSword_icon);
-                	dialogPanel.add(axeLabel, gbc3);        		
-                }
-                else if (e.getSource() == Sword_button) {
-                	JLabel axeLabel = new JLabel(sword_icon);
-                	dialogPanel.add(axeLabel, gbc3);        		
-                }
                 
                 for (JButton button:buttons) {
                     if (e.getSource() == button) {
                     	int x = bagFrame.getX() + (bagFrame.getWidth() - customDialog.getWidth()-200) / 2;
-                        int y = bagFrame.getY() + (bagFrame.getHeight() - customDialog.getHeight()-200) / 2;
+                        int y = bagFrame.getY() + (bagFrame.getHeight() - customDialog.getHeight()-200) / 2;  
                         customDialog.setLocation(x, y);
                     	customDialog.setSize(200, 200);
                     	customDialog.setIconImage(scaled_Axe_icon);
                     	customDialog.add(dialogPanel);
-                    	customDialog.setVisible(true); // 顯示對話框
+                    	customDialog.setVisible(true); // 顯示對話框            	
                 		break;
     				}
                 }
@@ -297,14 +364,16 @@ public class Bag{
 		exitbutton.addActionListener(actionListener);
 		
 		
+		
 		// 所有裝備按鈕的共同設置
 		for (JButton button:buttons) {
-			
+			 
 			// 加入滑鼠效果
 			button.addMouseListener(mouseAdapter);
 			
 			// 調整裝備按鈕圖片位置
-			button.setVerticalTextPosition(SwingConstants.NORTH);
+			
+			button.setVerticalTextPosition(SwingConstants.BOTTOM);
 			button.setHorizontalTextPosition(SwingConstants.CENTER);
 			button.setBackground(Color.white);
 			button.setBorder(null);
@@ -314,11 +383,12 @@ public class Bag{
 			button.addActionListener(actionListener);
 		}	
 		
-		bag_label.setBounds(200, 0, 150, 150);		
+		bag_label.setBounds(200, 25, 100, 100);		
 		backgroundPanel.setLayout(new BorderLayout());
 		backgroundPanel.add(exitbutton);
 		backgroundPanel.add(bag_label);
-		backgroundPanel.add(bag_backgroundPanel);				
+		backgroundPanel.add(bag_backgroundPanel);	
+		
 		bagFrame.add(backgroundPanel);
 	}
 }
