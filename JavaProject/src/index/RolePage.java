@@ -184,16 +184,15 @@ public class RolePage {
 				chanstr = gotowarrole;
 				gotowarrole = nowroleimg;
 				if(gotowarrole == "mage_icon") {
-					GameFloor.hplabel.setText("70");
-					GameFloor.attacklabel.setText("80");	
+					GameFloor.hplabel.setText(""+hero.mage_hp);
+					GameFloor.attacklabel.setText(""+hero.mage_attack);	
 				}
 				else {
-					GameFloor.hplabel.setText("90");
-					GameFloor.attacklabel.setText("50");
+					GameFloor.hplabel.setText(""+hero.swordsman_hp);
+					GameFloor.attacklabel.setText(""+hero.swordsman_attack);
 				}
 				nowroleimg = chanstr;
 			}
-
 		}
 
 	}// 按鈕事件設定結束
