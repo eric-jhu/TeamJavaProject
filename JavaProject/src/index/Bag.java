@@ -46,7 +46,7 @@ class bagBackground extends JPanel {
 }
 
 public class Bag{
-	private JFrame bagFrame;
+	private static JFrame bagFrame;
 	
 
 	JButton exitbutton = new JButton(new ImageIcon(System.getProperty("user.dir") + "\\image\\exit.png"));// 離開按鈕
@@ -133,10 +133,22 @@ public class Bag{
 	
 	
 	
-	public Bag() {
+	private static Bag instance;
+	
+	private Bag() {
 		setBag();
 		bagFrame.setVisible(true);
 	}
+	
+	public static Bag getInstance() {
+        if (instance == null) {
+            instance = new Bag();
+        }
+        else {
+        	bagFrame.setVisible(true);
+        }
+        return instance;
+    }
 	
 	// 創建裝備按鈕的圖片
 	static ImageIcon Equip_icon = new ImageIcon("image/items/gameButton.png");

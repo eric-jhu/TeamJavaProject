@@ -81,7 +81,7 @@ public class GameMainPage {
             public void actionPerformed(ActionEvent e) {
             	if (e.getSource() == bag_button) {
 					frame.setVisible(false);
-					Bag bag = new Bag();
+					Bag.getInstance();
 				}
             	else if (e.getSource() == stage_button) {
 					frame.setVisible(false);
