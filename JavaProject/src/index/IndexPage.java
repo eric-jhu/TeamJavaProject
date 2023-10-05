@@ -2,7 +2,6 @@ package index;
 
 import java.awt.BorderLayout;
 import java.awt.Color;
-import java.awt.Container;
 import java.awt.Dialog;
 import java.awt.Dimension;
 import java.awt.Font;
@@ -12,26 +11,37 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
-import java.awt.event.WindowListener;
-
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
-import javax.swing.WindowConstants;
 
 public class IndexPage {// 首頁版面
 
 	JFrame indexFrame = new JFrame("無盡之塔");// 版面
 
 	JLabel headLabel = new JLabel();// 大標題
+
 	// logo
 	ImageIcon Logo_icon = new ImageIcon(System.getProperty("user.dir") + "\\image\\logo.png");
 	ImageIcon logo_icon = new ImageIcon(Logo_icon.getImage().getScaledInstance(300, 200, Image.SCALE_SMOOTH));
-	
-	
 
-	JButton loginButton = new JButton("登入");// 登入紐
+	// 登入按鈕
+	ImageIcon LoginButton_icon = new ImageIcon(System.getProperty("user.dir") + "\\image\\loginButton.png");
+	ImageIcon logoinbutton_icon = new ImageIcon(
+			LoginButton_icon.getImage().getScaledInstance(90, 40, Image.SCALE_SMOOTH));
+	
+	// 註冊按鈕
+		ImageIcon RegisterButton_icon = new ImageIcon(System.getProperty("user.dir") + "\\image\\registerButton.png");
+		ImageIcon registerButton_icon = new ImageIcon(
+				RegisterButton_icon.getImage().getScaledInstance(90, 40, Image.SCALE_SMOOTH));
+		
+		// 登入按鈕
+		ImageIcon ExitButton_icon = new ImageIcon(System.getProperty("user.dir") + "\\image\\exitButton.png");
+		ImageIcon exitButton_icon = new ImageIcon(
+				ExitButton_icon.getImage().getScaledInstance(90, 40, Image.SCALE_SMOOTH));
+
+	JButton loginButton = new JButton();// 登入紐
 	JButton registerButton = new JButton("註冊");// 註冊紐
 	JButton exitButton = new JButton("離開");// 離開紐
 
@@ -71,17 +81,26 @@ public class IndexPage {// 首頁版面
 		// 位置設定
 		headLabel.setBounds(40, 30, 300, 200);
 		headLabel.setIcon(logo_icon);
-//		headLabel.setForeground(Color.WHITE);
-//		headLabel.setFont(new Font("Serif", Font.BOLD, 20));
-		loginButton.setBounds(150, 200, 80, 30);
-		loginButton.setForeground(Color.black);
-		loginButton.setFont(new Font("Serif", Font.BOLD, 20));
-		registerButton.setBounds(150, 300, 80, 30);
-		registerButton.setForeground(Color.black);
-		registerButton.setFont(new Font("Serif", Font.BOLD, 20));
-		exitButton.setBounds(150, 400, 80, 30);
-		exitButton.setForeground(Color.black);
-		exitButton.setFont(new Font("Serif", Font.BOLD, 20));
+		
+		loginButton.setBounds(145, 200, 90, 40);
+		loginButton.setIcon(logoinbutton_icon);
+		loginButton.setOpaque(false);
+		loginButton.setBorder(null);
+		loginButton.setBackground(Color.WHITE);
+
+		registerButton.setBounds(145, 320, 90, 40);		
+		registerButton.setIcon(registerButton_icon);
+		registerButton.setOpaque(false);
+		registerButton.setBorder(null);
+		registerButton.setBackground(Color.WHITE);
+		
+	
+		exitButton.setBounds(145, 450, 90, 40);
+		exitButton.setIcon(exitButton_icon);
+		exitButton.setOpaque(false);
+		exitButton.setBorder(null);
+		exitButton.setBackground(Color.WHITE);
+		
 
 		// 按鈕事件設定
 		loginButton.addActionListener(new IndexListener());
