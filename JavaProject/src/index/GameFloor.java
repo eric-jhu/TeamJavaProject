@@ -341,7 +341,7 @@ public class GameFloor {
 					int newhp = nowhp - 10;
 					hplabel.setText("" + newhp);
 				}
-				
+				shop.coin+=10;
 				battlebutton.setVisible(false);
 			}
 
