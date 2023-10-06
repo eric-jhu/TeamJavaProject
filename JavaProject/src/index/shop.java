@@ -77,7 +77,7 @@ public class shop {
 		frmShop.getContentPane().add(s1Button);
 		// 2號劍士商品
 		JButton s2Button_1 = new JButton("");
-		s2Button_1.setIcon(new ImageIcon(System.getProperty("user.dir") + "\\image\\helmet.jpg"));
+		s2Button_1.setIcon(new ImageIcon(System.getProperty("user.dir") + "\\image\\items\\sword.jpg"));
 		s2Button_1.setBounds(50, 530, 100, 100);
 		frmShop.getContentPane().add(s2Button_1);
 
@@ -88,7 +88,7 @@ public class shop {
 		frmShop.getContentPane().add(m1Button);
 		// 2號法師商品
 		JButton m2Button = new JButton("");
-		m2Button.setIcon(new ImageIcon(System.getProperty("user.dir") + "\\image\\magichat.jpg"));
+		m2Button.setIcon(new ImageIcon(System.getProperty("user.dir") + "\\image\\items\\magicbook.jpg"));
 		m2Button.setBounds(50, 420, 100, 100);
 		frmShop.getContentPane().add(m2Button);
 
@@ -110,7 +110,7 @@ public class shop {
 		m1buyButton.setBounds(200, 230, 150, 50);
 		frmShop.getContentPane().add(m1buyButton);
 
-		JButton m2buyButton = new JButton("<html>秘咒之魔法帽<br>$300 buy</html>");// 2號法師商品購買紐
+		JButton m2buyButton = new JButton("<html>秘咒之典<br>$300 buy</html>");// 2號法師商品購買紐
 		m2buyButton.setFont(new Font("Yu Gothic UI Semilight", Font.BOLD, 15));
 		m2buyButton.setBounds(200, 450, 150, 50);
 		frmShop.getContentPane().add(m2buyButton);
@@ -120,7 +120,7 @@ public class shop {
 		s1buyButton.setBounds(200, 340, 150, 50);
 		frmShop.getContentPane().add(s1buyButton);
 
-		JButton s2buyButton = new JButton("<html>幽靈騎士頭盔<br>$300 buy</html>");// 2號劍士商品購買紐
+		JButton s2buyButton = new JButton("<html>焰心之刃<br>$300 buy</html>");// 2號劍士商品購買紐
 		s2buyButton.setFont(new Font("Yu Gothic UI Semilight", Font.BOLD, 15));
 		s2buyButton.setBounds(200, 560, 150, 50);
 		frmShop.getContentPane().add(s2buyButton);
