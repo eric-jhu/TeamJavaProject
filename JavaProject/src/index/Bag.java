@@ -372,21 +372,33 @@ public class Bag{
                 	
                     case 1:
                     	Axe_button.setText("已裝備");
+                    	hero.swordsman_attack+=10;
+                    	GameFloor.attacklabel.setText(""+hero.swordsman_attack);
                         break;
                     case 2:
                         BlueMagicStick_button.setText("已裝備");
+                        hero.mage_attack+=10;
+                        GameFloor.attacklabel.setText(""+hero.mage_attack);
                         break;
                     case 3: 
                     	MagicBook_button.setText("已裝備");
+                    	hero.mage_attack+=10;
+                    	GameFloor.attacklabel.setText(""+hero.mage_attack);
                     	break;
                     case 4:
                     	MagicStick_button.setText("已裝備");
+                    	hero.mage_attack+=10;
+                    	GameFloor.attacklabel.setText(""+hero.mage_attack);
                     	break;
                     case 5:
                     	PurpleSword_button.setText("已裝備");
+                    	hero.swordsman_attack+=10;
+                    	GameFloor.attacklabel.setText(""+hero.swordsman_attack);
                     	break;
                     case 6:
                     	Sword_button.setText("已裝備");
+                    	hero.swordsman_attack+=10;
+                    	GameFloor.attacklabel.setText(""+hero.swordsman_attack);
                     	break;
                 	}
                 	// 裝備後將 isEquipped 設置為 false
