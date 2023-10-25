@@ -119,9 +119,7 @@ public class GameFloor {
 		backgroundlabel.add(rulebutton);
 		backgroundlabel.add(rolebutton);
 		backgroundlabel.add(itembackpackbutton);
-		itembackpackbutton.setVisible(false);
 		backgroundlabel.add(magicbackpackbutton);
-		magicbackpackbutton.setVisible(false);
 		backgroundlabel.add(hplabel);
 		backgroundlabel.add(attacklabel);
 		backgroundlabel.add(battlebutton);
@@ -214,7 +212,7 @@ public class GameFloor {
 				innerlayerfloor[i][j].addActionListener(new GameFloorListener());
 			}
 		}
-
+		magicbackpackbutton.addActionListener(new GameFloorListener());
 		exitbutton.addActionListener(new GameFloorListener());
 		rulebutton.addActionListener(new GameFloorListener());
 	}// 設定版面結束
@@ -366,7 +364,12 @@ public class GameFloor {
 				game_rule i = new game_rule();
 				i.ruleFrame.setVisible(true);
 			}
-
+			if (e.getSource() == magicbackpackbutton) {// 離開按鈕事件
+				floor = 1;
+				gamefloorFrame.dispose();
+				skill i = new skill();
+				i.frame.setVisible(true);
+			}
 			if (e.getSource() == okButton) { // 未撿鑰匙確認鈕
 				nokeyDialog.setVisible(false);
 			}
@@ -376,3 +379,4 @@ public class GameFloor {
 	}// 按鈕事件設定結束
 
 }
+
