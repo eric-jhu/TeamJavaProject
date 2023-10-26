@@ -90,7 +90,12 @@ HP:90 ATTACK:50
 法師 (血薄,戰鬥力較高)
  HP:70 ATTACK:80
 
- 
+# 商城介面介紹
+
+![商城](https://github.com/eric-jhu/TeamJavaProject/assets/65153061/181c8254-222d-49ec-9901-deb1d2bf76e9)
+
+
+
  
       
 
