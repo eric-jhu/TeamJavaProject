@@ -60,7 +60,37 @@ https://lucid.app/documents/view/d3cc504e-8661-4c20-9b16-c3b04156e662
 
 # 遊戲關卡介面介紹
 
-    
-  
+![遊戲畫面](https://github.com/eric-jhu/TeamJavaProject/assets/65153061/886ec0d0-b212-41e4-b1c0-52af7c178876)
+
+畫面中有4*4的板塊，玩法類似踩地雷，玩家要在這16個隱藏的板塊中找到通往下一層的鑰匙，但要小心隱藏在下方的怪物，盡自己所能的往下探索吧!
+
+# 遊戲規則介面介紹 
+
+ ![image](https://github.com/eric-jhu/TeamJavaProject/assets/65153061/e341561a-ab07-4121-bd8c-05b271b69b0d)
+
+提供遊戲規則介紹幫助玩家理解遊戲
+
+# 背包介面介紹
+
+![image](https://github.com/eric-jhu/TeamJavaProject/assets/65153061/7ce5e5c6-e095-4160-bab5-7d2b24c9b6a4)
+
+玩家可在背包頁面點選自己喜歡的道具裝備。點選道具會顯示裝備名稱以及裝備效果。
+
+但一次只能裝備一個道具。
+
+# 職業選擇介面介紹
+
+![image](https://github.com/eric-jhu/TeamJavaProject/assets/65153061/e3e29844-6a44-41f3-921a-2d0f71e50aea)
+
+目前有兩種職業可選擇分別是劍士與法師
+
+劍士 (血厚,戰鬥力較低)
+HP:90 ATTACK:50
+
+法師 (血薄,戰鬥力較高)
+ HP:70 ATTACK:80
+
+ 
+ 
       
 
