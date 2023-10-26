@@ -7,6 +7,7 @@
 我們致力於開發一款原創的JAVA視窗介面冒險遊戲，希望透過這個項目，不僅提高我們的撰寫程式技能，還能創造一個引人入勝的遊戲體驗，將玩家帶入冒險的世界。
 
 # UML圖
+![Blank diagram (1)](https://github.com/eric-jhu/TeamJavaProject/assets/140996895/c6b54996-52c7-4ffe-9b3f-ea6bedc71ca3)
 
 
 https://lucid.app/documents/view/d3cc504e-8661-4c20-9b16-c3b04156e662
