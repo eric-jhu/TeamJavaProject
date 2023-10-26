@@ -122,4 +122,10 @@ HP:90 ATTACK:50
  ![image](https://github.com/eric-jhu/TeamJavaProject/assets/65153061/ea665d80-edc1-4667-8835-26035c04ea7a)
 
 # 未來發展 
+遊戲功能擴充
+1. 更多屬性:  防禦力,爆擊率...等
+2.新增扭蛋系統:  抽酷炫裝備
+3.增加BOSS: 血厚戰鬥力高的怪,強制要打
+4.增加技能:  剎那斬,火流星...等
+
 
