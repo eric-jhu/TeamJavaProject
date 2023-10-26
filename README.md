@@ -42,6 +42,23 @@ https://lucid.app/documents/view/d3cc504e-8661-4c20-9b16-c3b04156e662
 
 # 登入與註冊介面介紹 
 
+![登入](https://github.com/eric-jhu/TeamJavaProject/assets/65153061/68b9ccb5-bf81-4520-a962-3c206973ca99)
+
+![註冊](https://github.com/eric-jhu/TeamJavaProject/assets/65153061/d4a00fbe-c5fd-438b-a1e4-b42433bbef92)
+
+連動MySQL資料庫，提供使用者註冊遊戲功能，當成功註冊後，使用者下次登入，需輸入註冊之帳號密碼
+
+# 遊戲大廳介面介紹
+
+![遊戲主畫面](https://github.com/eric-jhu/TeamJavaProject/assets/65153061/62b70dde-25f0-4e0d-b332-63f6b0df03dc)
+
+  大廳提供4種功能:
+    1.畫面中間Stage按鈕為進入關卡按鈕，按下進行遊戲
+    2.左下按鈕為背包，按下跳至背包畫面
+    3.中下方為角色按鈕，按下跳至角色畫面
+    4.右下按鈕為商城，按下跳至商城畫面
+
+# 遊戲關卡介面介紹
 
     
   
