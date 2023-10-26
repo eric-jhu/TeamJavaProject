@@ -94,8 +94,32 @@ HP:90 ATTACK:50
 
 ![商城](https://github.com/eric-jhu/TeamJavaProject/assets/65153061/181c8254-222d-49ec-9901-deb1d2bf76e9)
 
+金幣太多不知道該去哪花?
+
+商城內有武器可以購買
+2樣劍士用武器
+2樣法師用武器
+
+注意! 買過之後就不能再買了!
+
+# 問題與解決
+
+問題1: 裝備按鈕點擊取消後再點擊其他裝備按鈕裝備，所有按鈕都會被標示已裝備，再點回背包頁面查看裝備，裝備的對話框會逐漸增加。
+
+解決方法: 不斷檢查發現是主頁面每按一次背包就會創建一個背包頁面，導致問題發生。最後修改程式碼讓背包頁面從頭到尾只創建一次
+![image](https://github.com/eric-jhu/TeamJavaProject/assets/65153061/8df20c09-2c8f-434a-93d1-83f3050c5cb2)
 
 
- 
-      
+問題2:在進入關卡時樓層初始值更新不穩定，有時會初始化，有時維持上次遊戲時的樓層數
+
+解決方法: 將floor數值設為static使其記憶體便全域，並離開關卡時再設定一次，確保進入關卡時數值從1開始
+ ![image](https://github.com/eric-jhu/TeamJavaProject/assets/65153061/72efdb33-998f-438d-b74c-18eda9a6cad9)
+
+
+問題3: 在商城頁面可以無限購買東西且切回遊戲主畫面，再回去商城發現金幣變回初始值
+
+解決方法: 將COIN設為STATIC，並幫所有的商品按鈕新增辨別用布林值，每當按下購買後更改布林值使按鈕關閉
+ ![image](https://github.com/eric-jhu/TeamJavaProject/assets/65153061/ea665d80-edc1-4667-8835-26035c04ea7a)
+
+# 未來發展 
 
